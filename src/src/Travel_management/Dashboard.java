@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class Dashboard extends JFrame implements ActionListener {
     String username;
-    JButton checkpackages,addPersonalDetails, viewPersonalDetails,updatePersonalDetails;
+    JButton checkpackages,addPersonalDetails, viewPersonalDetails,updatePersonalDetails, bookpackage;
     Dashboard(String username){
 //        setBounds(0,0,1600,1000);
         this.username=username;
@@ -96,13 +96,14 @@ public class Dashboard extends JFrame implements ActionListener {
         checkpackages.addActionListener(this);
        p2.add(checkpackages);
 
-        JButton bookpackages =new JButton("Book Packages");
-        bookpackages.setBounds(0,250,300,50);
-        bookpackages.setBackground(new Color(0,0,102));
-        bookpackages.setForeground(Color.white);
-        bookpackages.setFont(new Font("tahoma", Font.PLAIN,20));
-        bookpackages.setMargin(new Insets(0,0,0,120));
-        p2.add(bookpackages);
+       bookpackage =new JButton("Book Packages");
+        bookpackage.setBounds(0,250,300,50);
+        bookpackage.setBackground(new Color(0,0,102));
+        bookpackage.setForeground(Color.white);
+        bookpackage.setFont(new Font("tahoma", Font.PLAIN,20));
+        bookpackage.setMargin(new Insets(0,0,0,120));
+        bookpackage.addActionListener(this);
+        p2.add(bookpackage);
 
         JButton viewpackages =new JButton("View Packages");
         viewpackages.setBounds(0,300,300,50);
@@ -205,6 +206,8 @@ public class Dashboard extends JFrame implements ActionListener {
         } else if (ae.getSource()==checkpackages) {
             new CheckPackage();
 
+        } else if (ae.getSource()==bookpackage) {
+            new BookPackage(username);
         }
     }
 
